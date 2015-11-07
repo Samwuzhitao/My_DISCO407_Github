@@ -1442,7 +1442,8 @@ I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI_Debug.h)(0x52E7F27F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\WM_GUI.h)(0x52E7F27E)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\LCD_ConfDefaults.h)(0x55FE7388)
-I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x55FE7CAA)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x563DAA12)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_Driver_Config\SSD1963_config.h)(0x563DAA0F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\USER\stm32f4xx_conf.h)(0x5559F33B)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Boot\stm32f4xx.h)(0x55FE5FAE)
@@ -1486,7 +1487,8 @@ I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\Global.h)(0x52E7F27E)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI_Version.h)(0x52E7F27F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUIDRV_FlexColor.h)(0x52E7F27F)
-I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x55FE7CAA)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x563DAA12)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_Driver_Config\SSD1963_config.h)(0x563DAA0F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\USER\stm32f4xx_conf.h)(0x5559F33B)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Boot\stm32f4xx.h)(0x55FE5FAE)
@@ -1529,10 +1531,57 @@ I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\LCD.h)(0x52E7F27F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\Global.h)(0x52E7F27E)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI_Version.h)(0x52E7F27F)
-F (.\BSP\My_DISCO_BSP.c)(0x563DA618)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\BSP -I.\Cmsis_Boot -I.\Cmsis_Core -I.\emWin522\Config -I.\emWin522\inc -I.\StdPeriph_Driver\inc -I.\USER -I.\My_Driver_Config -I.\My_BSP_Driver\SSD1963-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F4xx-DSTM32F40XX-o .\output\my_disco_bsp.o --omf_browse .\output\my_disco_bsp.crf --depend .\output\my_disco_bsp.d)
-F (.\BSP\My_DISCO_BSP.h)(0x563DA618)()
-F (.\My_BSP_Driver\SSD1963\SSD1963.c)(0x563DA844)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\BSP -I.\Cmsis_Boot -I.\Cmsis_Core -I.\emWin522\Config -I.\emWin522\inc -I.\StdPeriph_Driver\inc -I.\USER-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F4xx-DSTM32F40XX-o .\output\ssd1963.o --omf_browse .\output\ssd1963.crf --depend .\output\ssd1963.d)
-I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x55FE7CAA)
+F (.\BSP\My_DISCO_BSP.c)(0x563DD354)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\BSP -I.\Cmsis_Boot -I.\Cmsis_Core -I.\emWin522\Config -I.\emWin522\inc -I.\StdPeriph_Driver\inc -I.\USER -I.\My_Driver_Config -I.\My_BSP_Driver\SSD1963-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F4xx-DSTM32F40XX-o .\output\my_disco_bsp.o --omf_browse .\output\my_disco_bsp.crf --depend .\output\my_disco_bsp.d)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\BSP\My_DISCO_BSP.h)(0x563DD30A)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\BSP\My_DISCO_BSP_Config.h)(0x563DC96F)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Boot\stm32f4xx.h)(0x55FE5FAE)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Core\core_cm4.h)(0x5559F3AD)
+I (D:\Keil\ARM\ARMCC\include\stdint.h)(0x51C7B744)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Core\core_cmInstr.h)(0x5559F3AD)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Core\core_cmFunc.h)(0x5559F39C)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Core\core_cmSimd.h)(0x5559F39B)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Boot\system_stm32f4xx.h)(0x5559F432)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\USER\stm32f4xx_conf.h)(0x5559F33B)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\misc.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_can.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x555C4781)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x563DAA12)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_Driver_Config\SSD1963_config.h)(0x563DAA0F)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI.h)(0x52E7F27F)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI_ConfDefaults.h)(0x52E7F27F)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\Config\GUIConf.h)(0x55FE795C)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI_Type.h)(0x52E7F27F)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\LCD.h)(0x52E7F27F)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\Global.h)(0x52E7F27E)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI_Version.h)(0x52E7F27F)
+F (.\BSP\My_DISCO_BSP.h)(0x563DD30A)()
+F (.\BSP\My_DISCO_BSP_Config.h)(0x563DC96F)()
+F (.\My_BSP_Driver\SSD1963\SSD1963.c)(0x563DA844)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\BSP -I.\Cmsis_Boot -I.\Cmsis_Core -I.\emWin522\Config -I.\emWin522\inc -I.\StdPeriph_Driver\inc -I.\USER -I.\My_Driver_Config -I.\My_BSP_Driver\SSD1963-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F4xx-DSTM32F40XX-o .\output\ssd1963.o --omf_browse .\output\ssd1963.crf --depend .\output\ssd1963.d)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x563DAA12)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_Driver_Config\SSD1963_config.h)(0x563DAA0F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\USER\stm32f4xx_conf.h)(0x5559F33B)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x555C4781)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Boot\stm32f4xx.h)(0x55FE5FAE)
@@ -1567,9 +1616,9 @@ I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPerip
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x555C4781)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x555C4781)
-F (.\My_BSP_Driver\SSD1963\SSD1963.h)(0x55FE7CAA)()
-F (.\My_Driver_Config\SSD1963_config.h)(0x55FE7CAA)()
-F (.\USER\main.c)(0x563DA7D4)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\BSP -I.\Cmsis_Boot -I.\Cmsis_Core -I.\emWin522\Config -I.\emWin522\inc -I.\StdPeriph_Driver\inc -I.\USER -I.\My_Driver_Config -I.\My_BSP_Driver\SSD1963-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F4xx-DSTM32F40XX-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+F (.\My_BSP_Driver\SSD1963\SSD1963.h)(0x563DAA12)()
+F (.\My_Driver_Config\SSD1963_config.h)(0x563DAA0F)()
+F (.\USER\main.c)(0x563DD0D1)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\BSP -I.\Cmsis_Boot -I.\Cmsis_Core -I.\emWin522\Config -I.\emWin522\inc -I.\StdPeriph_Driver\inc -I.\USER -I.\My_Driver_Config -I.\My_BSP_Driver\SSD1963-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F4xx-DSTM32F40XX-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\USER\main.h)(0x55FE6381)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Boot\stm32f4xx.h)(0x55FE5FAE)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\Cmsis_Core\core_cm4.h)(0x5559F3AD)
@@ -1606,7 +1655,8 @@ I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPerip
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x555C4781)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x555C4781)
 I (D:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7B744)
-I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x55FE7CAA)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_BSP_Driver\SSD1963\SSD1963.h)(0x563DAA12)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\My_Driver_Config\SSD1963_config.h)(0x563DAA0F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI.h)(0x52E7F27F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI_ConfDefaults.h)(0x52E7F27F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\Config\GUIConf.h)(0x55FE795C)
@@ -1614,6 +1664,8 @@ I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\LCD.h)(0x52E7F27F)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\Global.h)(0x52E7F27E)
 I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\emWin522\inc\GUI_Version.h)(0x52E7F27F)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\BSP\My_DISCO_BSP.h)(0x563DD30A)
+I (E:\git\My_Git\My_DISCO_Board_Pro\My_DISCO_STM32F407_emWin\Emwin_Demo\BSP\My_DISCO_BSP_Config.h)(0x563DC96F)
 F (.\USER\main.h)(0x55FE6381)()
 F (.\USER\readme.txt)(0x5559F33B)()
 F (.\USER\stm32f4xx_conf.h)(0x5559F33B)()

@@ -2,6 +2,7 @@
 #include "main.h"
 #include "SSD1963.h"
 #include "GUI.h"
+#include "My_DISCO_BSP.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -12,7 +13,10 @@ GPIO_InitTypeDef GPIO_InitStructure;
 static __IO uint32_t TimingDelay;
 
 /* Private function prototypes -----------------------------------------------*/
-static void Delay(__IO uint32_t nTime);   
+static void Delay(__IO uint32_t nTime); 
+
+extern const DebugPeripheralTypedef DeBugGPIO;
+extern const DebugPeripheralTypedef DeBugSPI;
 /**
   * @brief  Main program
   * @param  None
@@ -30,15 +34,20 @@ int main(void)
 	
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_CRC, ENABLE);
 	GUI_Init();
-	GUI_SetBkColor(GUI_BLUE);
 	GUI_SetColor(GUI_RED);
 	GUI_Clear();
-	GUI_SetFont(&GUI_Font24_ASCII);
-	GUI_DispStringAt("Hello Word!", 0, 0);
+	
+	BSP_KeyInit( BSP_KEY1, BSP_KEY1_GPIO_PORT );
+	BSP_SPI_Init();
 	
   while (1)
   {
-
+		static uint32_t i = 0;
+		Debug_LCDShowTrgister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+		SPI_I2S_SendData(BSP_SPIx,'A');
+		
+		GUI_DispDec(i++,5);
+		Delay(50);
   }
 }
 

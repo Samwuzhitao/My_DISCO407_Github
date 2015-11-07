@@ -351,7 +351,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\BSP;.\Cmsis_Boot;.\Cmsis_Core;.\emWin522\Config;.\emWin522\inc;.\StdPeriph_Driver\inc;.\USER</IncludePath>
+              <IncludePath>.\BSP;.\Cmsis_Boot;.\Cmsis_Core;.\emWin522\Config;.\emWin522\inc;.\StdPeriph_Driver\inc;.\USER;.\My_Driver_Config;.\My_BSP_Driver\SSD1963</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -698,14 +698,44 @@
           <GroupName>BSP</GroupName>
           <Files>
             <File>
-              <FileName>TFT.c</FileName>
+              <FileName>My_DISCO_BSP.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\BSP\TFT.c</FilePath>
+              <FilePath>.\BSP\My_DISCO_BSP.c</FilePath>
             </File>
             <File>
-              <FileName>TFT.h</FileName>
+              <FileName>My_DISCO_BSP.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\BSP\TFT.h</FilePath>
+              <FilePath>.\BSP\My_DISCO_BSP.h</FilePath>
+            </File>
+            <File>
+              <FileName>My_DISCO_BSP_Config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\BSP\My_DISCO_BSP_Config.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>My_BSP_Driver</GroupName>
+          <Files>
+            <File>
+              <FileName>SSD1963.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\My_BSP_Driver\SSD1963\SSD1963.c</FilePath>
+            </File>
+            <File>
+              <FileName>SSD1963.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\My_BSP_Driver\SSD1963\SSD1963.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>My_Driver_Config</GroupName>
+          <Files>
+            <File>
+              <FileName>SSD1963_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\My_Driver_Config\SSD1963_config.h</FilePath>
             </File>
           </Files>
         </Group>
