@@ -712,6 +712,16 @@
               <FileType>5</FileType>
               <FilePath>.\BSP\My_DISCO_BSP_Config.h</FilePath>
             </File>
+            <File>
+              <FileName>My_DISCO_BSP_DeBug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\BSP\My_DISCO_BSP_DeBug.c</FilePath>
+            </File>
+            <File>
+              <FileName>My_DISCO_BSP_Debug.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\BSP\My_DISCO_BSP_Debug.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

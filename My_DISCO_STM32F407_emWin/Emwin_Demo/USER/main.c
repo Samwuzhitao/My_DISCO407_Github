@@ -3,6 +3,7 @@
 #include "SSD1963.h"
 #include "GUI.h"
 #include "My_DISCO_BSP.h"
+#include "My_DISCO_BSP_Debug.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -15,8 +16,6 @@ static __IO uint32_t TimingDelay;
 /* Private function prototypes -----------------------------------------------*/
 static void Delay(__IO uint32_t nTime); 
 
-extern const DebugPeripheralTypedef DeBugGPIO;
-extern const DebugPeripheralTypedef DeBugSPI;
 /**
   * @brief  Main program
   * @param  None
@@ -43,10 +42,11 @@ int main(void)
   while (1)
   {
 		static uint32_t i = 0;
-		Debug_LCDShowTrgister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
-		SPI_I2S_SendData(BSP_SPIx,'A');
 		
+		SPI_I2S_SendData(BSP_SPIx,'A');
+		Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 		GUI_DispDec(i++,5);
+		
 		Delay(50);
   }
 }

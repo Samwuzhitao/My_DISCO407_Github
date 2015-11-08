@@ -1,96 +1,19 @@
 /* Includes ------------------------------------------------------------------*/
 #include "My_DISCO_BSP.h"
+#include "My_DISCO_BSP_Debug.h"
 #include "string.h"
 
-#ifdef Open_Debug
-/*
-typedef struct 
-{
-	char * PeripheralName;
-	uint8_t PeripheralRegisterBit;
-	char * PeripheralRegisterName[100];
-	uint8_t PeripheralRegisterNumber;
-}DebugPeripheralTypedef;
-*/
-
-const DebugPeripheralTypedef DeBugSPI =
-{
-	"SPI2",
-	16,
-	{
-		"CR1",     "NOTUSE",
-		"CR2",     "NOTUSE",
-		"SR",      "NOTUSE",
-		"DR",      "NOTUSE",
-		"CRCPR",   "NOTUSE",
-		"RXCRCR",  "NOTUSE",
-		"TXCRCR",  "NOTUSE",
-		"I2SCFGR", "NOTUSE",
-		"I2SPR",   "NOTUSE",
-	},
-	18,
-};
-
-const DebugPeripheralTypedef DeBugGPIO =
-{
-	"GPIO",
-	32,
-	{
-		"MODER",     
-		"OTYPER",
-		"OSPEEDR",     
-		"PUPDR",
-		"IDR",      
-		"NOTUSE",
-		"DR",      
-		"ODR",
-		"BSRR",   
-		"LCKR",
-		"AFR[1]",  
-		"AFR[2]",  
-	},
-	12,
-};
-
-
-void Debug_LCDShowTrgister( uint32_t ulStartAddress, DebugPeripheralTypedef *DebugPeripheral )
-{
-	uint8_t i = 0;
-	
-	GUI_DispStringAt( "Debug Peripheral Name is :", 0, 0);
-	GUI_DispString( DebugPeripheral->PeripheralName );
-	GUI_DispNextLine();
-	
-	for( i = 0; i < DebugPeripheral->PeripheralRegisterNumber; i++ )
-	{
-		if( strncmp(DebugPeripheral->PeripheralRegisterName[i], "NOTUSE", 6))
-		{
-			GUI_DispString( DebugPeripheral->PeripheralName );
-			GUI_DispString( "->" );
-			GUI_DispString( DebugPeripheral->PeripheralRegisterName[i] );
-			GUI_DispString( ":" );
-			if( DebugPeripheral->PeripheralRegisterBit == 16 )
-			{
-			  GUI_DispHex( *(uint16_t *)( ulStartAddress + 2*i ), 8 );
-			}
-			else
-			{
-				GUI_DispHex( *(uint32_t *)( ulStartAddress + 4*i ), 8 );
-			}
-			GUI_DispNextLine();
-		}
-	}
-	
-	GUI_DispString( "Press Key1 Debug Next Step !");
-	while( BSP_GetKeyState( BSP_KEY1, BSP_KEY1_GPIO_PORT ) == 0 )
-	{
-
-	}
-	//GUI_Clear();
-}
-
-#endif
-
+/***************************************************************************** 
+  * @name   
+	*       BSP_KeyInit
+  * @brief  
+	*       Configures the GPIO Peripheral as Key.
+  * @param  
+	*       ulKeyPin: The keys of the GPIO pin
+  *	      ulKeyPort: The keys of the GPIO port
+  * @retval 
+	*       None
+  **************************************************************************/
 void BSP_KeyInit( uint32_t ulKeyPin, GPIO_TypeDef *ulKeyPort )
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -102,22 +25,28 @@ void BSP_KeyInit( uint32_t ulKeyPin, GPIO_TypeDef *ulKeyPort )
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;  
 	GPIO_Init(ulKeyPort, &GPIO_InitStructure);
-	
-	//Debug_LCDShowTrgister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
 }
 
+/***************************************************************************** 
+  * @name   
+	*       BSP_GetKeyState
+  * @brief  
+	*       Configures the SPI Peripheral and initialize it.
+  * @param  
+	*       ulKeyPin: The keys of the GPIO pin
+  *	      ulKeyPort: The keys of the GPIO port
+  * @retval 
+	*       ubKeyState: Current Key State
+  **************************************************************************/
 uint8_t BSP_GetKeyState( uint32_t ulKeyPin, GPIO_TypeDef *ulKeyPort )
 {
-	return (GPIO_ReadInputDataBit( ulKeyPort, ulKeyPin ));
+	uint8_t ubKeyState;
+	
+	ubKeyState = GPIO_ReadInputDataBit( ulKeyPort, ulKeyPin );
+	
+	return ubKeyState;
 }
 
-
-     uint8_t aTxBuffer[BUFFERSIZE] = "SPI Master/Slave : Communication between two SPI using Interrupts";
-__IO uint8_t aRxBuffer [BUFFERSIZE];
-__IO uint8_t ubRxIndex = 0;
-__IO uint8_t ubTxIndex = 0;
-
-SPI_InitTypeDef  SPI_InitStructure;
 
 /***************************************************************************** 
   * @name   
@@ -129,11 +58,18 @@ SPI_InitTypeDef  SPI_InitStructure;
   * @retval 
 	*       None
   **************************************************************************/
+     uint8_t aTxBuffer[BUFFERSIZE] = "SPI Master/Slave : Communication between two SPI using Interrupts";
+__IO uint8_t aRxBuffer [BUFFERSIZE];
+__IO uint8_t ubRxIndex = 0;
+__IO uint8_t ubTxIndex = 0;
+
+
 void BSP_SPI_Init( void )
 {
   GPIO_InitTypeDef GPIO_InitStructure;
   NVIC_InitTypeDef NVIC_InitStructure;
-
+	SPI_InitTypeDef  SPI_InitStructure;
+	
   /* Peripheral Clock Enable -------------------------------------------------*/
   /* Enable the SPI clock */
   BSP_SPIx_CLK_INIT(BSP_SPIx_CLK, ENABLE);
@@ -201,7 +137,7 @@ void BSP_SPI_Init( void )
   SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
   SPI_Init(BSP_SPIx, &SPI_InitStructure);
   
-	Debug_LCDShowTrgister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the SPI peripheral */
   SPI_Cmd(BSP_SPIx, ENABLE);
@@ -211,17 +147,17 @@ void BSP_SPI_Init( void )
   ubTxIndex = 0;
   ubRxIndex = 0;
 	
-	Debug_LCDShowTrgister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the Rx buffer not empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_RXNE, ENABLE);
 	
-  Debug_LCDShowTrgister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+  //Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the Tx buffer empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_TXE, ENABLE);
 	
-	Debug_LCDShowTrgister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	//Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 }
 
 /**
@@ -229,9 +165,9 @@ void BSP_SPI_Init( void )
   * @param  None
   * @retval None
   */
-void SPIx_IRQHANDLER(void)
+void BSP_SPIx_IRQHANDLER(void)
 {
-	//Debug_LCDShowTrgister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	//Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
   /* SPI in Receiver mode */
   if (SPI_I2S_GetITStatus(BSP_SPIx, SPI_I2S_IT_RXNE) == SET)
   {
