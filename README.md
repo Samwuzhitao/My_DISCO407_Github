@@ -8,5 +8,5 @@
 - STM32F407
 
 ### Image
-![My_DISCO_Board](./assets/images/My_DISCO_Board.jpg)
+![My-DISCO-Board](./assets/images/My-DISCO-Board.jpg)
 
