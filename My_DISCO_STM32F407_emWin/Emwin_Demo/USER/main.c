@@ -44,7 +44,7 @@ int main(void)
 		static uint32_t i = 0;
 		
 		SPI_I2S_SendData(BSP_SPIx,'A');
-		Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+		Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 		GUI_DispDec(i++,5);
 		
 		Delay(50);

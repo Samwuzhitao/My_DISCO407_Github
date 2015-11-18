@@ -1143,10 +1143,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>40</ColumnNumber>
+      <ColumnNumber>8</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>22</TopLine>
-      <CurrentLine>40</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>179</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\BSP\My_DISCO_BSP.c</PathWithFileName>
       <FilenameWithoutPath>My_DISCO_BSP.c</FilenameWithoutPath>
@@ -1191,10 +1191,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>41</ColumnNumber>
+      <ColumnNumber>14</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>56</TopLine>
-      <CurrentLine>83</CurrentLine>
+      <TopLine>85</TopLine>
+      <CurrentLine>69</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\BSP\My_DISCO_BSP_DeBug.c</PathWithFileName>
       <FilenameWithoutPath>My_DISCO_BSP_DeBug.c</FilenameWithoutPath>
@@ -1295,10 +1295,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>7</ColumnNumber>
+      <ColumnNumber>51</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>26</TopLine>
-      <CurrentLine>40</CurrentLine>
+      <TopLine>13</TopLine>
+      <CurrentLine>16</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USER\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>

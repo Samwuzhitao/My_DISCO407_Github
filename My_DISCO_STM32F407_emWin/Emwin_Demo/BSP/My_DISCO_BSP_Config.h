@@ -1,10 +1,17 @@
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MY_DISCO_BSP_CONFIG_H__
 #define __MY_DISCO_BSP_CONFIG_H__
+
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
+
 /* */
 #define Open_Debug
+/* if you want debug with UART, open this MICRO */
+#define DeBug_Mode_UART
+/* if you want debug with LCD, open this MICRO */
+//#define DeBug_Mode_LCD
+
 /* Key Define*/
 #define BSP_KEY1                           GPIO_Pin_0
 #define BSP_KEY1_CLK_INIT                  RCC_APB1PeriphClockCmd
@@ -42,5 +49,8 @@
 #define BSP_SPIx_MOSI_AF                   GPIO_AF_SPI2
 
 #define BUFFERSIZE                         100
+
+/* UART Define */
+
 
 #endif

@@ -137,7 +137,7 @@ void BSP_SPI_Init( void )
   SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
   SPI_Init(BSP_SPIx, &SPI_InitStructure);
   
-	Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the SPI peripheral */
   SPI_Cmd(BSP_SPIx, ENABLE);
@@ -147,17 +147,17 @@ void BSP_SPI_Init( void )
   ubTxIndex = 0;
   ubRxIndex = 0;
 	
-	Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the Rx buffer not empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_RXNE, ENABLE);
 	
-  //Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+  //Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the Tx buffer empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_TXE, ENABLE);
 	
-	//Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	//Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 }
 
 /**
@@ -167,7 +167,7 @@ void BSP_SPI_Init( void )
   */
 void BSP_SPIx_IRQHANDLER(void)
 {
-	//Debug_LCDShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	//Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
   /* SPI in Receiver mode */
   if (SPI_I2S_GetITStatus(BSP_SPIx, SPI_I2S_IT_RXNE) == SET)
   {

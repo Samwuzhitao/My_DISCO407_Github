@@ -15,8 +15,9 @@ typedef struct
 /* Exported constants --------------------------------------------------------*/
 extern const DebugPeripheralTypedef DeBugSPI;
 extern const DebugPeripheralTypedef DeBugGPIO;
+extern const DebugPeripheralTypedef DeBugRCC;
 
 /* Exported functions ------------------------------------------------------- */
-void Debug_LCDShowRegister( uint32_t ulStartAddress, DebugPeripheralTypedef *DebugPeripheral );
+void Debug_ShowRegister( uint32_t ulStartAddress, DebugPeripheralTypedef *DebugPeripheral );
 
 #endif
