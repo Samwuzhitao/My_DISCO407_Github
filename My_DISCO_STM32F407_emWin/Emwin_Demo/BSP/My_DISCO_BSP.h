@@ -22,5 +22,6 @@ uint8_t BSP_GetKeyState( uint32_t ulKeyPin, GPIO_TypeDef *ulKeyPort );
 
 /* SPI Bsp fuction */
 void BSP_SPI_Init( void );
+void BSP_USART_Init( void );
 
 #endif

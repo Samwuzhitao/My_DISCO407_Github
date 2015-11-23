@@ -5,6 +5,22 @@
 #include "stdio.h"
 
 /* variables ----------------------------------------------------------------*/
+const DebugPeripheralTypedef DeBugUART =
+{
+	"USART",
+	16,
+	{
+		"SR",     "NOTUSE",
+		"DR",     "NOTUSE",
+		"BRR",    "NOTUSE",
+		"CR1",    "NOTUSE",
+		"CR2",    "NOTUSE",
+		"CR3",    "NOTUSE", 
+		"GTPR",   "NOTUSE",
+	},
+	14,
+};
+
 const DebugPeripheralTypedef DeBugSPI =
 {
 	"SPI",
@@ -32,16 +48,14 @@ const DebugPeripheralTypedef DeBugGPIO =
 		"OTYPER",
 		"OSPEEDR",     
 		"PUPDR",
-		"IDR",      
-		"NOTUSE",
-		"DR",      
+		"IDR",           
 		"ODR",
 		"BSRR",   
 		"LCKR",
 		"AFR[1]",  
 		"AFR[2]",  
 	},
-	12,
+	10,
 };
 
 const DebugPeripheralTypedef DeBugRCC =
@@ -100,7 +114,9 @@ const DebugPeripheralTypedef DeBugRCC =
   **************************************************************************/
 void Debug_ShowRegister( uint32_t ulStartAddress, DebugPeripheralTypedef *DebugPeripheral )
 {
+#ifdef Open_Debug
 	uint8_t i = 0;
+	static uint32_t ulShowTimes = 0;
 	
 	#ifdef DeBug_Mode_LCD
 		GUI_DispStringAt( "Debug Peripheral Name: ", 0, 0);
@@ -121,27 +137,31 @@ void Debug_ShowRegister( uint32_t ulStartAddress, DebugPeripheralTypedef *DebugP
 				GUI_DispString( "->" );
 				GUI_DispString( DebugPeripheral->PeripheralRegisterName[i] );
 				GUI_DispString( ":" );
+				GUI_DispHex(  ulStartAddress + i*((DebugPeripheral->PeripheralRegisterBit)/8) , 8 );
+				GUI_DispString( ":" );
 			#endif
 			if( DebugPeripheral->PeripheralRegisterBit == 16 )
 			{
 				#ifdef DeBug_Mode_LCD
-					GUI_DispHex( *(uint16_t *)( ulStartAddress + 2*i ), 8 );
+					GUI_DispHex( *(uint16_t *)( ulStartAddress + i*2 ), 8 );
 				#endif
 				#ifdef DeBug_Mode_UART
-					printf("%8s -> %10s : %8x \r\n", DebugPeripheral->PeripheralName,
-							DebugPeripheral->PeripheralRegisterName[i],
-							*(uint16_t *)( ulStartAddress + 2*i ) );
+					printf("%8s -> %10s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
+								DebugPeripheral->PeripheralRegisterName[i],
+								ulStartAddress +  i*2,
+								*(uint16_t *)( ulStartAddress +  i*2 ) );
 				#endif
 			}
 			else
 			{
 				#ifdef DeBug_Mode_LCD
-					GUI_DispHex( *(uint32_t *)( ulStartAddress + 4*i ), 8 );
+					GUI_DispHex( *(uint32_t *)( ulStartAddress +  i*4 ), 8 );
 				#endif
 				#ifdef DeBug_Mode_UART
-					printf("%8s -> %10s : %8x \r\n", DebugPeripheral->PeripheralName,
-							DebugPeripheral->PeripheralRegisterName[i],
-							*(uint32_t *)( ulStartAddress + 2*i ) );
+					printf("%8s -> %10s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
+								DebugPeripheral->PeripheralRegisterName[i],
+								 ulStartAddress +  i*4,
+								*(uint32_t *)( ulStartAddress +  i*4) ) );
 				#endif
 			}
 			#ifdef DeBug_Mode_LCD
@@ -149,11 +169,88 @@ void Debug_ShowRegister( uint32_t ulStartAddress, DebugPeripheralTypedef *DebugP
 			#endif
 		}
 	}
-
+	#ifdef DeBug_Mode_LCD
+		GUI_DispString( "Run times :" );
+		GUI_DispHex( ulShowTimes++, 8 );
+	#endif
+	
 	//GUI_DispString( "Press Key1 Debug Next Step !");
 
 	//while( BSP_GetKeyState( BSP_KEY1, BSP_KEY1_GPIO_PORT ) == 0 )
 	//{
 
 	//}
+#endif
+}
+
+
+void Debug_ShowSpecificRegister( uint32_t ulStartAddress, 
+                                 DebugPeripheralTypedef *DebugPeripheral, 
+                                 char * SpecificPeripheralRegisterName )
+{
+#ifdef Open_Debug
+	uint8_t i = 0;
+	static uint32_t ulShowTimes = 0;
+	
+	#ifdef DeBug_Mode_LCD
+		GUI_DispStringAt( "Debug Peripheral Name: ", 0, 0);
+		GUI_DispString( DebugPeripheral->PeripheralName );
+		GUI_DispNextLine();
+	#endif
+	
+	#ifdef DeBug_Mode_UART
+		printf("\r\n Debug Peripheral Name: %s\r\n", DebugPeripheral->PeripheralName );
+	#endif
+	
+	for( i = 0; i < DebugPeripheral->PeripheralRegisterNumber; i++ )
+	{
+		if( 0 == strcmp(DebugPeripheral->PeripheralRegisterName[i], SpecificPeripheralRegisterName))
+		{
+			#ifdef DeBug_Mode_LCD
+				GUI_DispString( DebugPeripheral->PeripheralName );
+				GUI_DispString( "->" );
+				GUI_DispString( DebugPeripheral->PeripheralRegisterName[i] );
+				GUI_DispString( ":" );
+				GUI_DispHex(  ulStartAddress + i*((DebugPeripheral->PeripheralRegisterBit)/8) , 8 );
+				GUI_DispString( ":" );
+			#endif
+			if( DebugPeripheral->PeripheralRegisterBit == 16 )
+			{
+				#ifdef DeBug_Mode_LCD
+					GUI_DispHex( *(uint16_t *)( ulStartAddress + i*2 ), 8 );
+				#endif
+				#ifdef DeBug_Mode_UART
+					printf("%8s -> %10s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
+								DebugPeripheral->PeripheralRegisterName[i],
+								ulStartAddress +  i*2,
+								*(uint16_t *)( ulStartAddress +  i*2 ) );
+				#endif
+			}
+			else
+			{
+				#ifdef DeBug_Mode_LCD
+					GUI_DispHex( *(uint32_t *)( ulStartAddress +  i*4 ), 8 );
+				#endif
+				#ifdef DeBug_Mode_UART
+					printf("%8s -> %10s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
+								DebugPeripheral->PeripheralRegisterName[i],
+								ulStartAddress +  i*4,
+								*(uint32_t *)( ulStartAddress +  i*4) ) );
+				#endif
+			}
+			#ifdef DeBug_Mode_LCD
+				GUI_DispNextLine();
+			#endif
+		}
+	}
+	#ifdef DeBug_Mode_LCD
+		GUI_DispString( "Run times :" );
+		GUI_DispHex( ulShowTimes++, 8 );
+	#endif
+	
+	//GUI_DispString( "Press Key1 Debug Next Step !");
+	//while( BSP_GetKeyState( BSP_KEY1, BSP_KEY1_GPIO_PORT ) == 0 )
+	//{
+	//}
+#endif
 }

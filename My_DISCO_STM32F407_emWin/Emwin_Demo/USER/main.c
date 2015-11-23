@@ -24,6 +24,7 @@ static void Delay(__IO uint32_t nTime);
 int main(void)
 {
 	SSD1963_Init();
+
 	SSD1963_Clear(Red);
 	Delay(100);
 	SSD1963_Clear(Blue);
@@ -37,13 +38,32 @@ int main(void)
 	GUI_Clear();
 	
 	BSP_KeyInit( BSP_KEY1, BSP_KEY1_GPIO_PORT );
-	BSP_SPI_Init();
+	BSP_SPI_Init( );
+	
+	//Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	//while(1);
+	
+	BSP_USART_Init( );
+	
+	//Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
+	//Debug_ShowRegister( USART1_BASE, (DebugPeripheralTypedef *)&DeBugUART );
+	//Debug_ShowRegister( RCC_BASE, (DebugPeripheralTypedef *)&DeBugRCC );
+	//Debug_ShowSpecificRegister( RCC_BASE, (DebugPeripheralTypedef *)&DeBugRCC, "APB2ENR" );
+	
+	while(1)
+	{
+	  USART_SendData(USART1, 'b');
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
+    {}
+		
+		Debug_ShowRegister( USART1_BASE, (DebugPeripheralTypedef *)&DeBugUART );	
+	}
 	
   while (1)
   {
 		static uint32_t i = 0;
 		
-		SPI_I2S_SendData(BSP_SPIx,'A');
+		SPI_I2S_SendData( BSP_SPIx, 'A' );
 		Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 		GUI_DispDec(i++,5);
 		

@@ -137,7 +137,7 @@ void BSP_SPI_Init( void )
   SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
   SPI_Init(BSP_SPIx, &SPI_InitStructure);
   
-	Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	//Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the SPI peripheral */
   SPI_Cmd(BSP_SPIx, ENABLE);
@@ -147,7 +147,7 @@ void BSP_SPI_Init( void )
   ubTxIndex = 0;
   ubRxIndex = 0;
 	
-	Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+	//Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the Rx buffer not empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_RXNE, ENABLE);
@@ -196,4 +196,80 @@ void BSP_SPIx_IRQHANDLER(void)
       SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_TXE, DISABLE);
     }
   }
+}
+
+
+void BSP_USART_Init( void )
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+	  USART_InitTypeDef USART_InitStructure;
+	
+		/* Enable GPIO clock */
+		RCC_AHB1PeriphClockCmd(BSP_USARTx_TX_GPIO_CLK | BSP_USARTx_RX_GPIO_CLK, ENABLE);
+		
+		/* Enable USART clock */
+		RCC_APB2PeriphClockCmd(BSP_USARTx_CLK, ENABLE);
+		
+		/* Connect USART pins to AF7 */
+		GPIO_PinAFConfig(BSP_USARTx_TX_GPIO_PORT, BSP_USARTx_TX_SOURCE, BSP_USARTx_TX_AF);
+		GPIO_PinAFConfig(BSP_USARTx_RX_GPIO_PORT, BSP_USARTx_RX_SOURCE, BSP_USARTx_RX_AF);
+		
+		/* Configure USART Tx and Rx as alternate function push-pull */
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+		GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+		GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+		GPIO_InitStructure.GPIO_Pin = BSP_USARTx_TX_PIN;
+		GPIO_Init(BSP_USARTx_TX_GPIO_PORT, &GPIO_InitStructure);
+		Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
+		//while(1);
+		
+		GPIO_InitStructure.GPIO_Pin = BSP_USARTx_RX_PIN;
+		GPIO_Init(BSP_USARTx_RX_GPIO_PORT, &GPIO_InitStructure);
+		Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
+		//while(1);
+		
+	  /* USARTx configuration ----------------------------------------------------*/
+    USART_InitStructure.USART_BaudRate = BSP_UARTx_BAUNDRATE;
+	
+    USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+    USART_InitStructure.USART_StopBits = USART_StopBits_1;
+    USART_InitStructure.USART_Parity = USART_Parity_No;
+    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+		
+    //Debug_ShowRegister( USART1_BASE, (DebugPeripheralTypedef *)&DeBugUART );
+		/* Configure and enable the USART */
+    USART_Init(USART1, &USART_InitStructure);
+		Debug_ShowRegister( USART1_BASE, (DebugPeripheralTypedef *)&DeBugUART );
+		
+//  /* NVIC configuration */
+//  /* Configure the Priority Group to 2 bits */
+//  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+//  /* Enable the USARTx Interrupt */
+//  NVIC_InitStructure.NVIC_IRQChannel = USARTx_IRQn;
+//  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+//  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+//  NVIC_Init(&NVIC_InitStructure);
+	
+	  USART_Cmd(USART1, ENABLE);
+}
+
+/**
+  * @brief  Retargets the C library printf function to the USART.
+  * @param  None
+  * @retval None
+  */
+int fputc( int ch ) 
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART */
+  USART_SendData(USART1, (uint8_t) ch);
+
+  /* Loop until the end of transmission */
+  while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
+  {}
+
+  return ch;
 }
