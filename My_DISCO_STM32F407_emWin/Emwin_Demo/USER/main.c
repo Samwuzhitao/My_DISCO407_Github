@@ -4,6 +4,10 @@
 #include "GUI.h"
 #include "My_DISCO_BSP.h"
 #include "My_DISCO_BSP_Debug.h"
+#include "My_DISCO_BSP_Config.h"
+#include "string.h"
+#include "stdarg.h"
+#include "stdio.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -21,8 +25,11 @@ static void Delay(__IO uint32_t nTime);
   * @param  None
   * @retval None
   */
+		void uart_init(u32 bound);
 int main(void)
 {
+	SystemInit();
+	
 	SSD1963_Init();
 
 	SSD1963_Clear(Red);
@@ -38,26 +45,15 @@ int main(void)
 	GUI_Clear();
 	
 	BSP_KeyInit( BSP_KEY1, BSP_KEY1_GPIO_PORT );
-	BSP_SPI_Init( );
-	
-	//Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
-	//while(1);
-	
+
 	BSP_USART_Init( );
 	
+	BSP_SPI_Init( );
+
 	//Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
-	//Debug_ShowRegister( USART1_BASE, (DebugPeripheralTypedef *)&DeBugUART );
+	//Debug_ShowRegister( BSP_USARTx_BASE, (DebugPeripheralTypedef *)&DeBugUART );
 	//Debug_ShowRegister( RCC_BASE, (DebugPeripheralTypedef *)&DeBugRCC );
 	//Debug_ShowSpecificRegister( RCC_BASE, (DebugPeripheralTypedef *)&DeBugRCC, "APB2ENR" );
-	
-	while(1)
-	{
-	  USART_SendData(USART1, 'b');
-		while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
-    {}
-		
-		Debug_ShowRegister( USART1_BASE, (DebugPeripheralTypedef *)&DeBugUART );	
-	}
 	
   while (1)
   {

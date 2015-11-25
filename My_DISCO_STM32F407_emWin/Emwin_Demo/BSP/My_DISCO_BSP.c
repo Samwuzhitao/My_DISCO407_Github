@@ -1,7 +1,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "My_DISCO_BSP.h"
 #include "My_DISCO_BSP_Debug.h"
+#include "My_DISCO_BSP_Config.h"
 #include "string.h"
+#include "stdarg.h"
+#include "stdio.h"
 
 /***************************************************************************** 
   * @name   
@@ -75,15 +78,8 @@ void BSP_SPI_Init( void )
   BSP_SPIx_CLK_INIT(BSP_SPIx_CLK, ENABLE);
   
   /* Enable GPIO clocks */
-  RCC_AHB1PeriphClockCmd( BSP_SPIx_SCK_GPIO_CLK | BSP_SPIx_MISO_GPIO_CLK | BSP_SPIx_MOSI_GPIO_CLK, ENABLE);
+  RCC_AHB1PeriphClockCmd( BSP_SPIx_NSS_GPIO_CLK | BSP_SPIx_SCK_GPIO_CLK | BSP_SPIx_MISO_GPIO_CLK | BSP_SPIx_MOSI_GPIO_CLK, ENABLE);
 
-  /* SPI GPIO Configuration --------------------------------------------------*/
-  /* GPIO Deinitialisation */
-	GPIO_DeInit(BSP_SPIx_NSS_GPIO_PORT);
-  GPIO_DeInit(BSP_SPIx_SCK_GPIO_PORT);
-  GPIO_DeInit(BSP_SPIx_MISO_GPIO_PORT);
-  GPIO_DeInit(BSP_SPIx_MOSI_GPIO_PORT);
-	
   /* Connect SPI pins to AF5 */  
 	GPIO_PinAFConfig(BSP_SPIx_NSS_GPIO_PORT,  BSP_SPIx_NSS_SOURCE,  BSP_SPIx_NSS_AF);
   GPIO_PinAFConfig(BSP_SPIx_SCK_GPIO_PORT,  BSP_SPIx_SCK_SOURCE,  BSP_SPIx_SCK_AF);
@@ -152,7 +148,7 @@ void BSP_SPI_Init( void )
   /* Enable the Rx buffer not empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_RXNE, ENABLE);
 	
-  //Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+  Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the Tx buffer empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_TXE, ENABLE);
@@ -208,7 +204,7 @@ void BSP_USART_Init( void )
 		RCC_AHB1PeriphClockCmd(BSP_USARTx_TX_GPIO_CLK | BSP_USARTx_RX_GPIO_CLK, ENABLE);
 		
 		/* Enable USART clock */
-		RCC_APB2PeriphClockCmd(BSP_USARTx_CLK, ENABLE);
+		BSP_USARTx_CLK_INIT(BSP_USARTx_CLK, ENABLE);
 		
 		/* Connect USART pins to AF7 */
 		GPIO_PinAFConfig(BSP_USARTx_TX_GPIO_PORT, BSP_USARTx_TX_SOURCE, BSP_USARTx_TX_AF);
@@ -221,12 +217,12 @@ void BSP_USART_Init( void )
 		GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 		GPIO_InitStructure.GPIO_Pin = BSP_USARTx_TX_PIN;
 		GPIO_Init(BSP_USARTx_TX_GPIO_PORT, &GPIO_InitStructure);
-		Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
+		//Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
 		//while(1);
 		
 		GPIO_InitStructure.GPIO_Pin = BSP_USARTx_RX_PIN;
 		GPIO_Init(BSP_USARTx_RX_GPIO_PORT, &GPIO_InitStructure);
-		Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
+		//Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
 		//while(1);
 		
 	  /* USARTx configuration ----------------------------------------------------*/
@@ -240,8 +236,7 @@ void BSP_USART_Init( void )
 		
     //Debug_ShowRegister( USART1_BASE, (DebugPeripheralTypedef *)&DeBugUART );
 		/* Configure and enable the USART */
-    USART_Init(USART1, &USART_InitStructure);
-		Debug_ShowRegister( USART1_BASE, (DebugPeripheralTypedef *)&DeBugUART );
+    USART_Init(BSP_USARTx, &USART_InitStructure);
 		
 //  /* NVIC configuration */
 //  /* Configure the Priority Group to 2 bits */
@@ -253,7 +248,7 @@ void BSP_USART_Init( void )
 //  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 //  NVIC_Init(&NVIC_InitStructure);
 	
-	  USART_Cmd(USART1, ENABLE);
+	  USART_Cmd(BSP_USARTx, ENABLE);
 }
 
 /**
@@ -261,14 +256,14 @@ void BSP_USART_Init( void )
   * @param  None
   * @retval None
   */
-int fputc( int ch ) 
+int fputc(int ch, FILE *f)
 {
   /* Place your implementation of fputc here */
   /* e.g. write a character to the USART */
-  USART_SendData(USART1, (uint8_t) ch);
+  USART_SendData(BSP_USARTx, (uint8_t) ch);
 
   /* Loop until the end of transmission */
-  while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
+  while (USART_GetFlagStatus(BSP_USARTx, USART_FLAG_TC) == RESET)
   {}
 
   return ch;

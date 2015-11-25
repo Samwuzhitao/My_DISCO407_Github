@@ -1,4 +1,5 @@
 /* Includes ------------------------------------------------------------------*/
+#include "My_DISCO_BSP_Config.h"
 #include "My_DISCO_BSP_Debug.h"
 #include "My_DISCO_BSP.h"
 #include "string.h"
@@ -161,7 +162,7 @@ void Debug_ShowRegister( uint32_t ulStartAddress, DebugPeripheralTypedef *DebugP
 					printf("%8s -> %10s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
 								DebugPeripheral->PeripheralRegisterName[i],
 								 ulStartAddress +  i*4,
-								*(uint32_t *)( ulStartAddress +  i*4) ) );
+								*(uint32_t *)( ulStartAddress +  i*4) ) ;
 				#endif
 			}
 			#ifdef DeBug_Mode_LCD
@@ -220,7 +221,7 @@ void Debug_ShowSpecificRegister( uint32_t ulStartAddress,
 					GUI_DispHex( *(uint16_t *)( ulStartAddress + i*2 ), 8 );
 				#endif
 				#ifdef DeBug_Mode_UART
-					printf("%8s -> %10s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
+					printf("%8s->%8s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
 								DebugPeripheral->PeripheralRegisterName[i],
 								ulStartAddress +  i*2,
 								*(uint16_t *)( ulStartAddress +  i*2 ) );
@@ -232,10 +233,10 @@ void Debug_ShowSpecificRegister( uint32_t ulStartAddress,
 					GUI_DispHex( *(uint32_t *)( ulStartAddress +  i*4 ), 8 );
 				#endif
 				#ifdef DeBug_Mode_UART
-					printf("%8s -> %10s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
+					printf("%8s->%8s ( %8x ): %8x \r\n", DebugPeripheral->PeripheralName,
 								DebugPeripheral->PeripheralRegisterName[i],
 								ulStartAddress +  i*4,
-								*(uint32_t *)( ulStartAddress +  i*4) ) );
+								*(uint32_t *)( ulStartAddress +  i*4)  );
 				#endif
 			}
 			#ifdef DeBug_Mode_LCD
