@@ -351,7 +351,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\BSP;.\Cmsis_Boot;.\Cmsis_Core;.\emWin522\Config;.\emWin522\inc;.\StdPeriph_Driver\inc;.\USER;.\My_Driver_Config;.\My_BSP_Driver\SSD1963</IncludePath>
+              <IncludePath>.\BSP;.\Cmsis_Boot;.\Cmsis_Core;.\emWin522\Config;.\emWin522\inc;.\StdPeriph_Driver\inc;.\USER;.\My_Driver_Config;.\My_BSP_Driver\SSD1963;.\My_BSP_Driver\ENC28J60</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -737,15 +737,55 @@
               <FileType>5</FileType>
               <FilePath>.\My_BSP_Driver\SSD1963\SSD1963.h</FilePath>
             </File>
+            <File>
+              <FileName>ENC28J60.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\My_BSP_Driver\ENC28J60\ENC28J60.c</FilePath>
+            </File>
+            <File>
+              <FileName>ENC28J60.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\My_BSP_Driver\ENC28J60\ENC28J60.h</FilePath>
+            </File>
+            <File>
+              <FileName>ip_arp_udp_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\My_BSP_Driver\ENC28J60\ip_arp_udp_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip_arp_udp_tcp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\My_BSP_Driver\ENC28J60\ip_arp_udp_tcp.h</FilePath>
+            </File>
+            <File>
+              <FileName>web_server.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\My_BSP_Driver\ENC28J60\web_server.c</FilePath>
+            </File>
+            <File>
+              <FileName>web_server.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\My_BSP_Driver\ENC28J60\web_server.h</FilePath>
+            </File>
+            <File>
+              <FileName>net.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\My_BSP_Driver\ENC28J60\net.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>My_Driver_Config</GroupName>
+          <GroupName>My_BSP_Driver_Config</GroupName>
           <Files>
             <File>
               <FileName>SSD1963_config.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\My_Driver_Config\SSD1963_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>ENC28J60_Config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\My_Driver_Config\ENC28J60_Config.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -761,11 +801,6 @@
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\USER\main.h</FilePath>
-            </File>
-            <File>
-              <FileName>readme.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\USER\readme.txt</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_conf.h</FileName>

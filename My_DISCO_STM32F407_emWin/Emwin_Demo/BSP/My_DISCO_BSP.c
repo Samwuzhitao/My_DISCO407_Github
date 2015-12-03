@@ -70,7 +70,7 @@ __IO uint8_t ubTxIndex = 0;
 void BSP_SPI_Init( void )
 {
   GPIO_InitTypeDef GPIO_InitStructure;
-  NVIC_InitTypeDef NVIC_InitStructure;
+//  NVIC_InitTypeDef NVIC_InitStructure;
 	SPI_InitTypeDef  SPI_InitStructure;
 	
   /* Peripheral Clock Enable -------------------------------------------------*/
@@ -78,10 +78,12 @@ void BSP_SPI_Init( void )
   BSP_SPIx_CLK_INIT(BSP_SPIx_CLK, ENABLE);
   
   /* Enable GPIO clocks */
-  RCC_AHB1PeriphClockCmd( BSP_SPIx_NSS_GPIO_CLK | BSP_SPIx_SCK_GPIO_CLK | BSP_SPIx_MISO_GPIO_CLK | BSP_SPIx_MOSI_GPIO_CLK, ENABLE);
+  RCC_AHB1PeriphClockCmd( BSP_SPIx_NSS_GPIO_CLK  | 
+	                        BSP_SPIx_SCK_GPIO_CLK  | 
+	                        BSP_SPIx_MISO_GPIO_CLK | 
+	                        BSP_SPIx_MOSI_GPIO_CLK , ENABLE);
 
   /* Connect SPI pins to AF5 */  
-	GPIO_PinAFConfig(BSP_SPIx_NSS_GPIO_PORT,  BSP_SPIx_NSS_SOURCE,  BSP_SPIx_NSS_AF);
   GPIO_PinAFConfig(BSP_SPIx_SCK_GPIO_PORT,  BSP_SPIx_SCK_SOURCE,  BSP_SPIx_SCK_AF);
   GPIO_PinAFConfig(BSP_SPIx_MISO_GPIO_PORT, BSP_SPIx_MISO_SOURCE, BSP_SPIx_MISO_AF);    
   GPIO_PinAFConfig(BSP_SPIx_MOSI_GPIO_PORT, BSP_SPIx_MOSI_SOURCE, BSP_SPIx_MOSI_AF);
@@ -91,10 +93,6 @@ void BSP_SPI_Init( void )
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_DOWN;
 
-  /* SPI NSS pin configuration */
-  GPIO_InitStructure.GPIO_Pin = BSP_SPIx_NSS_PIN;
-  GPIO_Init(BSP_SPIx_NSS_GPIO_PORT, &GPIO_InitStructure);
-	
   /* SPI SCK pin configuration */
   GPIO_InitStructure.GPIO_Pin = BSP_SPIx_SCK_PIN;
   GPIO_Init(BSP_SPIx_SCK_GPIO_PORT, &GPIO_InitStructure);
@@ -114,19 +112,19 @@ void BSP_SPI_Init( void )
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
   SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
   SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
   SPI_InitStructure.SPI_CRCPolynomial = 7;
   
   /* Configure the Priority Group to 1 bit */                
-  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-  
-  /* Configure the SPI interrupt priority */
-  NVIC_InitStructure.NVIC_IRQChannel = BSP_SPIx_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-  NVIC_Init(&NVIC_InitStructure);
+//  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+//  
+//  /* Configure the SPI interrupt priority */
+//  NVIC_InitStructure.NVIC_IRQChannel = BSP_SPIx_IRQn;
+//  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+//  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+//  NVIC_Init(&NVIC_InitStructure);
 	
   /* Master board configuration */    
   /* Initializes the SPI communication */
@@ -143,17 +141,44 @@ void BSP_SPI_Init( void )
   ubTxIndex = 0;
   ubRxIndex = 0;
 	
-	//Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
-	
   /* Enable the Rx buffer not empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_RXNE, ENABLE);
 	
-  Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+  //Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
 	
   /* Enable the Tx buffer empty interrupt */
   SPI_I2S_ITConfig(BSP_SPIx, SPI_I2S_IT_TXE, ENABLE);
+}
+
+void BSP_SPI_CS_Init( void )
+{
+  GPIO_InitTypeDef GPIO_InitStructure;
 	
-	//Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+  /* Peripheral Clock Enable -------------------------------------------------*/
+  /* Enable the SPI clock */
+  BSP_SPIx_CLK_INIT(BSP_SPIx_NSS_GPIO_CLK, ENABLE);
+  
+  /* Enable GPIO clocks */
+  RCC_AHB1PeriphClockCmd( BSP_SPIx_NSS_GPIO_CLK , ENABLE);
+
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_PuPd  = GPIO_PuPd_DOWN;
+
+  /* SPI NSS pin configuration */
+  GPIO_InitStructure.GPIO_Pin = BSP_SPIx_NSS_PIN;
+  GPIO_Init(BSP_SPIx_NSS_GPIO_PORT, &GPIO_InitStructure);	
+}
+
+void BSP_SPI_CS_Clear( void )
+{
+	GPIO_WriteBit(BSP_SPIx_NSS_GPIO_PORT, BSP_SPIx_NSS_PIN, 0);
+}
+
+void BSP_SPI_CS_Set( void )
+{
+	GPIO_WriteBit(BSP_SPIx_NSS_GPIO_PORT, BSP_SPIx_NSS_PIN, 1);
 }
 
 /**

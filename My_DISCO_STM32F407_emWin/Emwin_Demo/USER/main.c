@@ -1,16 +1,27 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "SSD1963.h"
+
+#include "ENC28J60.h"
+#include "ip_arp_udp_tcp.h"
+#include "net.h"
+#include "web_server.h"
+
 #include "GUI.h"
 #include "My_DISCO_BSP.h"
 #include "My_DISCO_BSP_Debug.h"
 #include "My_DISCO_BSP_Config.h"
+
 #include "string.h"
+
 #include "stdarg.h"
 #include "stdio.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+
+
+
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -28,6 +39,12 @@ static void Delay(__IO uint32_t nTime);
 		void uart_init(u32 bound);
 int main(void)
 {
+	unsigned int plen, i1 = 0;
+	unsigned int dat_p;
+	unsigned char i = 0;
+	unsigned char cmd, *buf1;
+	unsigned int payloadlen = 0;
+	
 	SystemInit();
 	
 	SSD1963_Init();
@@ -49,18 +66,21 @@ int main(void)
 	BSP_USART_Init( );
 	
 	BSP_SPI_Init( );
-
+	BSP_SPI_CS_Init( );
+	
 	//Debug_ShowRegister( GPIOA_BASE, (DebugPeripheralTypedef *)&DeBugGPIO );
 	//Debug_ShowRegister( BSP_USARTx_BASE, (DebugPeripheralTypedef *)&DeBugUART );
 	//Debug_ShowRegister( RCC_BASE, (DebugPeripheralTypedef *)&DeBugRCC );
 	//Debug_ShowSpecificRegister( RCC_BASE, (DebugPeripheralTypedef *)&DeBugRCC, "APB2ENR" );
 	
+
+		
   while (1)
   {
 		static uint32_t i = 0;
 		
-		SPI_I2S_SendData( BSP_SPIx, 'A' );
-		Debug_ShowRegister( SPI2_BASE, (DebugPeripheralTypedef *)&DeBugSPI );
+		Web_Server();
+		
 		GUI_DispDec(i++,5);
 		
 		Delay(50);
