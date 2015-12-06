@@ -3,9 +3,9 @@
 #include "SSD1963.h"
 
 #include "ENC28J60.h"
-#include "ip_arp_udp_tcp.h"
-#include "net.h"
-#include "web_server.h"
+//#include "ip_arp_udp_tcp.h"
+//#include "net.h"
+//#include "web_server.h"
 
 #include "GUI.h"
 #include "My_DISCO_BSP.h"
@@ -17,6 +17,15 @@
 #include "stdarg.h"
 #include "stdio.h"
 
+
+#include "lwip/err.h"
+#include "netif/etharp.h"
+	
+#include "netconfig.h"
+
+#include "cmd.h"
+#include "httpd.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 
@@ -27,6 +36,7 @@
 /* Private function prototypes -----------------------------------------------*/
 GPIO_InitTypeDef GPIO_InitStructure;
 static __IO uint32_t TimingDelay;
+extern __IO uint32_t LocalTime;
 
 /* Private function prototypes -----------------------------------------------*/
 static void Delay(__IO uint32_t nTime); 
@@ -39,11 +49,6 @@ static void Delay(__IO uint32_t nTime);
 		void uart_init(u32 bound);
 int main(void)
 {
-	unsigned int plen, i1 = 0;
-	unsigned int dat_p;
-	unsigned char i = 0;
-	unsigned char cmd, *buf1;
-	unsigned int payloadlen = 0;
 	
 	SystemInit();
 	
@@ -73,18 +78,22 @@ int main(void)
 	//Debug_ShowRegister( RCC_BASE, (DebugPeripheralTypedef *)&DeBugRCC );
 	//Debug_ShowSpecificRegister( RCC_BASE, (DebugPeripheralTypedef *)&DeBugRCC, "APB2ENR" );
 	
+  /* 初始化LWIP协议栈*/
+	LwIP_Init(); 
 
-		
-  while (1)
-  {
-		static uint32_t i = 0;
-		
-		Web_Server();
-		
-		GUI_DispDec(i++,5);
-		
-		Delay(50);
+	/*初始化web server 显示网页程序*/
+	httpd_init();
+  
+  /* 初始化telnet   远程控制 程序 */   
+  CMD_init();                                       
+
+  /* Infinite loop */
+  while ( 1 )
+	{	
+		/*轮询*/  
+		LwIP_Periodic_Handle(LocalTime);		          	  
   }
+
 }
 
 /**

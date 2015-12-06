@@ -34,6 +34,7 @@
 
 extern void GUI_X_TimerTick(void);
 extern void TimingDelay_Decrement(void);
+extern void Time_Update(void);
 /** @addtogroup STM32F4xx_StdPeriph_Examples
   * @{
   */
@@ -150,6 +151,7 @@ void SysTick_Handler(void)
 {
   TimingDelay_Decrement();
 	GUI_X_TimerTick();
+	Time_Update();
 }
 
 /******************************************************************************/
