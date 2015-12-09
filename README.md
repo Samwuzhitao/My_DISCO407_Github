@@ -10,3 +10,10 @@
 ### Image
 ![My-DISCO-Board](./assets/images/My-DISCO-Board.jpg)
 
+### CUBELIB
+	此目录主要是存放使用CUBE库的代码
+
+### STDLIB
+	此目录主要存放标准外设库的代码
+
+
