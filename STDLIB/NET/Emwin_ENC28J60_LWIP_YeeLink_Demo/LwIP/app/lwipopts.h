@@ -168,12 +168,12 @@ a lot of data that needs to be copied, this should be set high. */
 /**
  * TCP_DEBUG: Enable debugging for TCP.
  */
-#define TCP_DEBUG                       LWIP_DBG_OFF
+#define TCP_DEBUG                       LWIP_DBG_ON
 
 /**
  * TCP_INPUT_DEBUG: Enable debugging in tcp_in.c for incoming debug.
  */
-#define TCP_INPUT_DEBUG                 LWIP_DBG_OFF
+#define TCP_INPUT_DEBUG                 LWIP_DBG_ON
 /**
  * TCP_FR_DEBUG: Enable debugging in tcp_in.c for fast retransmit.
  */
@@ -198,16 +198,16 @@ a lot of data that needs to be copied, this should be set high. */
 /**
  * TCP_OUTPUT_DEBUG: Enable debugging in tcp_out.c output functions.
  */
-#define TCP_OUTPUT_DEBUG                LWIP_DBG_OFF
+#define TCP_OUTPUT_DEBUG                LWIP_DBG_ON
 /**
  * TCP_RST_DEBUG: Enable debugging for TCP with the RST message.
  */
-#define TCP_RST_DEBUG                   LWIP_DBG_OFF
+#define TCP_RST_DEBUG                   LWIP_DBG_ON
 
 /**
  * TCP_QLEN_DEBUG: Enable debugging for TCP queue lengths.
  */
-#define TCP_QLEN_DEBUG                  LWIP_DBG_OFF
+#define TCP_QLEN_DEBUG                  LWIP_DBG_ON
 
 /**
  * UDP_DEBUG: Enable debugging in UDP.
@@ -217,7 +217,7 @@ a lot of data that needs to be copied, this should be set high. */
 /**
  * TCPIP_DEBUG: Enable debugging in tcpip.c.
  */
-#define TCPIP_DEBUG                     LWIP_DBG_OFF
+#define TCPIP_DEBUG                     LWIP_DBG_ON
 
 /**
  * PPP_DEBUG: Enable debugging for PPP.

@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Emwin_LWIP_Demo</TargetName>
+      <TargetName>Emwin_LWIP_YeeLink_Demo</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
@@ -1061,6 +1061,16 @@
               <FileName>web_html.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\LwIP\app\web_html.h</FilePath>
+            </File>
+            <File>
+              <FileName>http_YeeLink.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LwIP\app\http_YeeLink.c</FilePath>
+            </File>
+            <File>
+              <FileName>http_YeeLink.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LwIP\app\http_YeeLink.h</FilePath>
             </File>
           </Files>
         </Group>

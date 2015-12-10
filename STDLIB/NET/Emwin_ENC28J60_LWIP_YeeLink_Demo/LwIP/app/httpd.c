@@ -28,11 +28,13 @@ static err_t http_recv(void *arg, struct tcp_pcb *pcb,struct pbuf *p,err_t err)
 	char *ch       = NULL;
 	
 	data = p->payload;	//把接收到的数据指针交给data
-
+	
+	printf(data);
+	
 	if (err == ERR_OK && p != NULL)	//判断是否非空
 	{	    	 
 		// 如果没有这句的调用，网页端将无法接受的数据。 
-		//tcp_recved(pcb, p->tot_len); //接收pbuf数据	
+		tcp_recved(pcb, p->tot_len); //接收pbuf数据	
 		 
 		if(strncmp(data,"GET",3)==0) 
 		{		
@@ -93,8 +95,6 @@ static err_t http_recv(void *arg, struct tcp_pcb *pcb,struct pbuf *p,err_t err)
 
   return err;
 }
-
-
 
 /*
  * 函数名：http_accept

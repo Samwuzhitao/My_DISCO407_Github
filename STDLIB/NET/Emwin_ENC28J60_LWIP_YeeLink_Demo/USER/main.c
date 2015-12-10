@@ -25,12 +25,17 @@
 
 #include "cmd.h"
 #include "httpd.h"
+#include "http_YeeLink.h"
+
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 
 
-
+#define SYSTEMTICK_PERIOD_MS  10
+extern u8_t data[1024];
+extern char wendu[5];
+extern struct tcp_pcb *echoclient_pcb;
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -50,6 +55,7 @@ static void Delay(__IO uint32_t nTime);
 
 int main(void)
 {
+  int i_counter = 180;	
 	
 	SystemInit();
 	
@@ -83,17 +89,30 @@ int main(void)
 	LwIP_Init(); 
 
 	/* 初始化web server 显示网页程序 */
-	httpd_init();
+	//httpd_init();
   
-  /* 初始化telnet 远程控制 程序 */   
-  CMD_init();                                       
+  /* 初始化telnet 远程控制程序 */   
+  //CMD_init();                                       
 
+  /* 初始化web celient远程控制程序 */  
+  tcp_echoclient_connect();	
+	
   /* Infinite loop */
   while ( 1 )
 	{	
 		/*轮询*/  
-		LwIP_Periodic_Handle(LocalTime);	
-		//tcp_write(pcb,led_ctrl_on,sizeof(led_ctrl_on),1); 		
+		
+		LwIP_Periodic_Handle(LocalTime);
+		
+		if(i_counter++ > 1000)
+			i_counter = 101;
+		
+		wendu[0] = i_counter/100%10 + 0x30;
+		wendu[1] = i_counter/10%10 + 0x30;
+		wendu[3] = i_counter%10 + 0x30;
+	
+		printf(wendu);
+		Delay(0xfff);
   }
 
 }

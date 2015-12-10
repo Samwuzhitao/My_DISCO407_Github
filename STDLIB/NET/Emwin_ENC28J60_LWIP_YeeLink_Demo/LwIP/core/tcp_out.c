@@ -380,7 +380,7 @@ tcp_write(struct tcp_pcb *pcb, const void *arg, u16_t len, u8_t apiflags)
   LWIP_DEBUGF(TCP_OUTPUT_DEBUG, ("tcp_write(pcb=%p, data=%p, len=%"U16_F", apiflags=%"U16_F")\r\r\n",
     (void *)pcb, arg, len, (u16_t)apiflags));
 		
-  printf("需要送出的的信息：\r\ntcp_write(pcb=%p, data=%s, len=%4d, apiflags=%4d\r\n",(void *)pcb, arg, len, (u16_t)apiflags);
+  //printf("需要送出的的信息：\r\ntcp_write(pcb=%p, data=%s, len=%4d, apiflags=%4d\r\n",(void *)pcb, arg, len, (u16_t)apiflags);
 	
   LWIP_ERROR("tcp_write: arg == NULL (programmer violates API)", 
              arg != NULL, return ERR_ARG;);

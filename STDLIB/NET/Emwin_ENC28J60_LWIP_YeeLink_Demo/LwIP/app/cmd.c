@@ -57,12 +57,12 @@ err_t CMD_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err)
   /* We perform here any necessary processing on the pbuf */
   if (p != NULL)   //传入的pbuf非空
   {        
-	/* We call this function to tell the LwIp that we have processed the data */
-	/* This lets the stack advertise a larger window, so more data can be received*/
-	tcp_recved(pcb, p->tot_len); //接收pbuf数据
+		/* We call this function to tell the LwIp that we have processed the data */
+		/* This lets the stack advertise a larger window, so more data can be received*/
+		tcp_recved(pcb, p->tot_len); //接收pbuf数据
 
-    /* Check the name if NULL, no data passed, return withh illegal argument error */
-	if(!dat) 				 //为空时释放内存
+		/* Check the name if NULL, no data passed, return withh illegal argument error */
+		if(!dat) 				 //为空时释放内存
     {
       pbuf_free(p);
       return ERR_ARG;
@@ -71,13 +71,13 @@ err_t CMD_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err)
     done = 0;
     for(q=p; q != NULL; q = q->next) 	 //q为pbuf的指针
     {
-      c = q->payload;					 //c获取pbuf中的数据指针payload
+      c = q->payload;					         //c获取pbuf中的数据指针payload
       for(i=0; i<q->len && !done; i++) 
-	  {
+			{
         done = ((c[i] == '\r') || (c[i] == '\n'));	//接收到回车
-        if(dat->length < MAX_NAME_SIZE) 			 //把字符串保存到结构体
-	    {
-          dat->bytes[dat->length++] = c[i];	//保存payload中的数据到name结构体
+        if(dat->length < MAX_NAME_SIZE) 			      //把字符串保存到结构体
+				{
+          dat->bytes[dat->length++] = c[i];	        //保存payload中的数据到name结构体
         }
       }
     } 
@@ -103,7 +103,7 @@ err_t CMD_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err)
 //      name->bytes[name->length-2] = '\r';	 //转化为标准的\r\n两个字符表示回车结束
 //      name->bytes[name->length-1] = '\n';	 
 			  dat->bytes[dat->length-2] = '\0'; //加结束符，提取出bytes的数据
-    }
+			}
 		
 	   	if(strcmp(r_msg.user,"Samwuzhitao")==0) //已输入过用户名
 			{
@@ -112,33 +112,33 @@ err_t CMD_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err)
 			   {
 						strcpy(r_msg.CMD,dat->bytes);	 //复制命令
 
-						 if(strcmp(r_msg.CMD,"LED1_ON")==0)	//分析命令，开灯
-						   {
-						   	 //LED1(ON);
+					   if(strcmp(r_msg.CMD,"LED1_ON")==0)	//分析命令，开灯
+					   {
+								 //LED1(ON);
 								 GUI_DispString( "LED1 ON" );GUI_DispNextLine();
-						   	 tcp_write(pcb,STATUS_ON, strlen(STATUS_ON), 1);//控制成功	 
-                 tcp_write(pcb,IN_CMD, strlen(IN_CMD), 1);	 //提示输入下一命令
-							  }
+								 tcp_write(pcb,STATUS_ON, strlen(STATUS_ON), 1);//控制成功	 
+								 tcp_write(pcb,IN_CMD, strlen(IN_CMD), 1);	 //提示输入下一命令
+						 }
 						 else if(strcmp(r_msg.CMD,"LED1_OFF")==0)	//分析命令，关灯
-						   {
-						   		//LED1(OFF);
-								  GUI_DispString( "LED1 OFF" );GUI_DispNextLine();
-							   	tcp_write(pcb,STATUS_OFF, strlen(STATUS_OFF), 1);//控制成功	 
-								  tcp_write(pcb,IN_CMD, strlen(IN_CMD), 1);	  //提示输入下一命令
-						   }
+						 {
+								//LED1(OFF);
+								GUI_DispString( "LED1 OFF" );GUI_DispNextLine();
+								tcp_write(pcb,STATUS_OFF, strlen(STATUS_OFF), 1);//控制成功	 
+								tcp_write(pcb,IN_CMD, strlen(IN_CMD), 1);	  //提示输入下一命令
+						 }
 						 else  //查找不到命令
-						 	{
-							tcp_write(pcb,CMD_ERR, strlen(CMD_ERR), 1);	 //命令错误
-							tcp_write(pcb,IN_CMD, strlen(IN_CMD), 1);	 //提示输入下一命令
-							}
+						{
+								tcp_write(pcb,CMD_ERR, strlen(CMD_ERR), 1);	 //命令错误
+								tcp_write(pcb,IN_CMD, strlen(IN_CMD), 1);	 //提示输入下一命令
+						}
 
-					 }
-				else if(strcmp(dat->bytes,"123456")==0)//第一次输入密码，密码正确
-				   	{
+				 }
+				 else if(strcmp(dat->bytes,"123456")==0)//第一次输入密码，密码正确
+				 {
 					strcpy(r_msg.PWD,dat->bytes);	 //复制密码
 					tcp_write(pcb,IN_CMD, strlen(IN_CMD), 1);	 //提示输入下一命令
 
-					}
+				 }
 				else //密码错误
 				{	
 				tcp_write(pcb,PWD_ERR, strlen(PWD_ERR), 1);	 //密码错误
