@@ -55,7 +55,7 @@ static void Delay(__IO uint32_t nTime);
 
 int main(void)
 {
-  int i_counter = 180;	
+  int i_counter = 160;	
 	
 	SystemInit();
 	
@@ -95,15 +95,17 @@ int main(void)
   //CMD_init();                                       
 
   /* ³õÊ¼»¯web celientÔ¶³Ì¿ØÖÆ³ÌÐò */  
-  tcp_echoclient_connect();	
+  //tcp_client_connect();
+	tcp_echoclient_connect();
 	
   /* Infinite loop */
   while ( 1 )
 	{	
-		/*ÂÖÑ¯*/  
-		
+		/*ÂÖÑ¯*/ 
+		//tcp_echoclient_connect();		
+		Delay(500);
 		LwIP_Periodic_Handle(LocalTime);
-		
+
 		if(i_counter++ > 1000)
 			i_counter = 101;
 		
@@ -112,7 +114,10 @@ int main(void)
 		wendu[3] = i_counter%10 + 0x30;
 	
 		printf(wendu);
-		Delay(0xfff);
+		
+		printf("\r\n");
+		
+		Delay(500);
   }
 
 }

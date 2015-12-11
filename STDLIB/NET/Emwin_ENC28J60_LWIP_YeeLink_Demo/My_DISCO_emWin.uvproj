@@ -351,7 +351,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\BSP;.\Cmsis_Boot;.\Cmsis_Core;.\emWin522\Config;.\emWin522\inc;.\StdPeriph_Driver\inc;.\USER;.\My_Driver_Config;.\My_BSP_Driver\SSD1963;.\My_BSP_Driver\ENC28J60;.\LwIP\include;.\LwIP\app;.\LwIP\arch;.\LwIP\include\ipv4</IncludePath>
+              <IncludePath>.\BSP;.\Cmsis_Boot;.\Cmsis_Core;.\emWin522\Config;.\emWin522\inc;.\StdPeriph_Driver\inc;.\USER;.\My_Driver_Config;.\My_BSP_Driver\SSD1963;.\My_BSP_Driver\ENC28J60;.\LwIP\include;.\LwIP\app;.\LwIP\arch;.\LwIP\include\ipv4;.\LwIP\app\tcpecho_raw</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1071,6 +1071,11 @@
               <FileName>http_YeeLink.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\LwIP\app\http_YeeLink.h</FilePath>
+            </File>
+            <File>
+              <FileName>YeeLink_html.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LwIP\app\YeeLink_html.h</FilePath>
             </File>
           </Files>
         </Group>

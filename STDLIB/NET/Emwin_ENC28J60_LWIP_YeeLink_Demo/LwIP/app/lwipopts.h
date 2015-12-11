@@ -90,6 +90,8 @@ a lot of data that needs to be copied, this should be set high. */
 /*******************************************************************************************************************/
 #define LWIP_DEBUG                      1
 #define LWIP_DBG_TYPES_ON               LWIP_DBG_ON
+//#define LWIP_DBG_TRACE                  LWIP_DBG_ON
+
 
 /**
  * ETHARP_DEBUG: Enable debugging in etharp.c.
@@ -168,7 +170,7 @@ a lot of data that needs to be copied, this should be set high. */
 /**
  * TCP_DEBUG: Enable debugging for TCP.
  */
-#define TCP_DEBUG                       LWIP_DBG_ON
+#define TCP_DEBUG                       LWIP_DBG_OFF
 
 /**
  * TCP_INPUT_DEBUG: Enable debugging in tcp_in.c for incoming debug.
@@ -253,7 +255,6 @@ a lot of data that needs to be copied, this should be set high. */
  * DNS_DEBUG: Enable debugging for DNS.
  */
 #define DNS_DEBUG                       LWIP_DBG_OFF
-
 
 
 

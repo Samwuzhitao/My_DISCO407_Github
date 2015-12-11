@@ -168,7 +168,40 @@
           <Name>-O207 -S0 -C0 -FO7 -FD20000000 -FC800 -FN1 -FF0STM32F4xx_1024 -FS08000000 -FL0100000)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>102</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>E:\git\My_Git\My_DISCO_Github\STDLIB\NET\Emwin_ENC28J60_LWIP_YeeLink_Demo\LwIP\app\http_YeeLink.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>106</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>E:\git\My_Git\My_DISCO_Github\STDLIB\NET\Emwin_ENC28J60_LWIP_YeeLink_Demo\LwIP\app\netconfig.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+      </Breakpoint>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -337,8 +370,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>176</TopLine>
-      <CurrentLine>183</CurrentLine>
+      <TopLine>175</TopLine>
+      <CurrentLine>186</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Cmsis_Boot\startup_stm32f40xx.s</PathWithFileName>
       <FilenameWithoutPath>startup_stm32f40xx.s</FilenameWithoutPath>
@@ -385,7 +418,7 @@
       <Focus>0</Focus>
       <ColumnNumber>23</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>680</TopLine>
+      <TopLine>683</TopLine>
       <CurrentLine>688</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Cmsis_Boot\system_stm32f4xx.c</PathWithFileName>
@@ -713,7 +746,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>447</TopLine>
+      <TopLine>450</TopLine>
       <CurrentLine>455</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\StdPeriph_Driver\src\stm32f4xx_gpio.c</PathWithFileName>
@@ -953,7 +986,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1180</TopLine>
+      <TopLine>1183</TopLine>
       <CurrentLine>1188</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\StdPeriph_Driver\src\stm32f4xx_spi.c</PathWithFileName>
@@ -1001,8 +1034,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>245</TopLine>
-      <CurrentLine>246</CurrentLine>
+      <TopLine>1301</TopLine>
+      <CurrentLine>1308</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\StdPeriph_Driver\src\stm32f4xx_usart.c</PathWithFileName>
       <FilenameWithoutPath>stm32f4xx_usart.c</FilenameWithoutPath>
@@ -1065,7 +1098,7 @@
       <Focus>0</Focus>
       <ColumnNumber>34</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>67</TopLine>
+      <TopLine>61</TopLine>
       <CurrentLine>93</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\emWin522\Config\GUIConf.c</PathWithFileName>
@@ -1081,7 +1114,7 @@
       <Focus>0</Focus>
       <ColumnNumber>19</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>59</TopLine>
+      <TopLine>62</TopLine>
       <CurrentLine>65</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\emWin522\Config\GUIDRV_Template.c</PathWithFileName>
@@ -1121,7 +1154,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>92</TopLine>
+      <TopLine>95</TopLine>
       <CurrentLine>102</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\emWin522\OS\GUI_X.c</PathWithFileName>
@@ -1191,9 +1224,9 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>4</ColumnNumber>
+      <ColumnNumber>16</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>129</TopLine>
+      <TopLine>132</TopLine>
       <CurrentLine>142</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\BSP\My_DISCO_BSP_DeBug.c</PathWithFileName>
@@ -1655,10 +1688,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>22</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1624</TopLine>
-      <CurrentLine>1637</CurrentLine>
+      <TopLine>757</TopLine>
+      <CurrentLine>778</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\core\tcp.c</PathWithFileName>
       <FilenameWithoutPath>tcp.c</FilenameWithoutPath>
@@ -1671,10 +1704,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <TopLine>191</TopLine>
+      <CurrentLine>210</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\core\tcp_in.c</PathWithFileName>
       <FilenameWithoutPath>tcp_in.c</FilenameWithoutPath>
@@ -1689,8 +1722,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>333</TopLine>
-      <CurrentLine>337</CurrentLine>
+      <TopLine>721</TopLine>
+      <CurrentLine>722</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\core\tcp_out.c</PathWithFileName>
       <FilenameWithoutPath>tcp_out.c</FilenameWithoutPath>
@@ -1983,10 +2016,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>43</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>140</TopLine>
-      <CurrentLine>141</CurrentLine>
+      <TopLine>1289</TopLine>
+      <CurrentLine>1294</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\netif\etharp.c</PathWithFileName>
       <FilenameWithoutPath>etharp.c</FilenameWithoutPath>
@@ -1999,10 +2032,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>41</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>216</TopLine>
-      <CurrentLine>243</CurrentLine>
+      <TopLine>177</TopLine>
+      <CurrentLine>186</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\netif\ethernetif.c</PathWithFileName>
       <FilenameWithoutPath>ethernetif.c</FilenameWithoutPath>
@@ -2111,10 +2144,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>12</ColumnNumber>
+      <ColumnNumber>9</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>106</TopLine>
-      <CurrentLine>119</CurrentLine>
+      <TopLine>215</TopLine>
+      <CurrentLine>240</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\app\cmd.c</PathWithFileName>
       <FilenameWithoutPath>cmd.c</FilenameWithoutPath>
@@ -2127,10 +2160,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>8</ColumnNumber>
+      <ColumnNumber>6</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>22</TopLine>
-      <CurrentLine>35</CurrentLine>
+      <TopLine>99</TopLine>
+      <CurrentLine>52</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\app\httpd.c</PathWithFileName>
       <FilenameWithoutPath>httpd.c</FilenameWithoutPath>
@@ -2145,8 +2178,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>91</TopLine>
-      <CurrentLine>104</CurrentLine>
+      <TopLine>105</TopLine>
+      <CurrentLine>106</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\app\netconfig.c</PathWithFileName>
       <FilenameWithoutPath>netconfig.c</FilenameWithoutPath>
@@ -2241,8 +2274,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <TopLine>102</TopLine>
+      <CurrentLine>115</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\LwIP\app\http_YeeLink.c</PathWithFileName>
       <FilenameWithoutPath>http_YeeLink.c</FilenameWithoutPath>
@@ -2265,6 +2298,22 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>16</GroupNumber>
+      <FileNumber>122</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\LwIP\app\YeeLink_html.h</PathWithFileName>
+      <FilenameWithoutPath>YeeLink_html.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -2275,14 +2324,14 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>17</GroupNumber>
-      <FileNumber>122</FileNumber>
+      <FileNumber>123</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>8</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>83</TopLine>
-      <CurrentLine>96</CurrentLine>
+      <TopLine>100</TopLine>
+      <CurrentLine>122</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USER\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -2291,7 +2340,7 @@
     </File>
     <File>
       <GroupNumber>17</GroupNumber>
-      <FileNumber>123</FileNumber>
+      <FileNumber>124</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2307,7 +2356,7 @@
     </File>
     <File>
       <GroupNumber>17</GroupNumber>
-      <FileNumber>124</FileNumber>
+      <FileNumber>125</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2323,7 +2372,7 @@
     </File>
     <File>
       <GroupNumber>17</GroupNumber>
-      <FileNumber>125</FileNumber>
+      <FileNumber>126</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -2339,7 +2388,7 @@
     </File>
     <File>
       <GroupNumber>17</GroupNumber>
-      <FileNumber>126</FileNumber>
+      <FileNumber>127</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
