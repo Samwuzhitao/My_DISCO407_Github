@@ -42,7 +42,7 @@ extern struct tcp_pcb *echoclient_pcb;
 GPIO_InitTypeDef GPIO_InitStructure;
 static __IO uint32_t TimingDelay;
 extern __IO uint32_t LocalTime;
-
+extern char Updateflag ;
 /* Private function prototypes -----------------------------------------------*/
 static void Delay(__IO uint32_t nTime); 
 
@@ -96,17 +96,27 @@ int main(void)
 
   /* 初始化web celient远程控制程序 */  
   //tcp_client_connect();
-	tcp_echoclient_connect();
+	tcp_client_connect();
 	
   /* Infinite loop */
   while ( 1 )
 	{	
+		static int i = 0;
 		/*轮询*/ 
-		//tcp_echoclient_connect();		
-		Delay(500);
+		if(i >= 150)
+		{
+			i = 0;
+			i_counter ++;
+			if(Updateflag == 1)
+			{
+				tcp_client_connect();	
+			}
+			printf("*******************  tcp_client_connect *************************\r\n");
+		}			
+		
 		LwIP_Periodic_Handle(LocalTime);
 
-		if(i_counter++ > 1000)
+		if(i_counter> 1000)
 			i_counter = 101;
 		
 		wendu[0] = i_counter/100%10 + 0x30;
@@ -115,9 +125,11 @@ int main(void)
 	
 		printf(wendu);
 		
-		printf("\r\n");
+		printf("      i = %d\r\n",i);
 		
-		Delay(500);
+		i++;
+		
+		Delay(10);
   }
 
 }

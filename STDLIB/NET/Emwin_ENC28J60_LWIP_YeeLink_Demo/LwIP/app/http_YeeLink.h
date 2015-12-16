@@ -9,7 +9,24 @@
 #include <string.h>
 #include <stdio.h>
 
+/* ECHO protocol states */
+enum echoclient_states
+{
+  ES_TCPCLIENT_NONE = 0,
+  ES_TCPCLIENT_CONNECTED,
+  ES_TCPCLIENT_CLOSING,
+};
+
+
+/* structure to be passed as argument to the tcp callbacks */
+struct tcp_client_struct
+{
+  u8 state;                  /* connection status */
+  struct tcp_pcb *pcb;       /* pointer on the current tcp_pcb */
+  struct pbuf *p;            /* pointer on pbuf to be transmitted */
+};
+
 //void http_YeeLink_init(void);
-void tcp_echoclient_connect(void);
+void tcp_client_connect(void);
 
 #endif
